@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.93.139.186:3306/seckill?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: seckill
+    password: 123456
+
+  rabbitmq:
+    host: 47.93.139.186
+    username: guest
+    password: guest
+    port: 5672
+  redis:
+    host: 47.93.139.186
+    port: 6379
+    jedis:
+      pool:
+        max-active: -1
+    database: 4
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+
+
+jwt:
+  secret: f4e2e52034348f86b67cde581c0f9eb5
+  expire: 604800
+  header: token
+
+shiro-redis:
+  enabled: true
+  redis-manager:
+    host: 47.93.139.186:6379
+
+
+
+
+server:
+  port: 8081
+
