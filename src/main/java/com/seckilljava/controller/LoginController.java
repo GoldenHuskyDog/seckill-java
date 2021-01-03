@@ -99,9 +99,6 @@ public class LoginController {
         String password = map.get("password");
         String password1 = map.get("password1");
         String password2 = map.get("password2");
-        System.out.println(password);
-        System.out.println(password1);
-        System.out.println(password2);
         AccountProfile accountProfile = (AccountProfile) SecurityUtils.getSubject().getPrincipal();
         User user = userService.getById(accountProfile.getId());
         if(!user.getPassword().equals(SecureUtil.md5(password))){
