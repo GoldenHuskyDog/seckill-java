@@ -64,7 +64,7 @@ public class OrderController {
         AccountProfile accountProfile = (AccountProfile) SecurityUtils.getSubject().getPrincipal();
         String key = "userid:" + accountProfile.getId();
         if(!stringRedisTemplate.hasKey(key)){
-            return Result.fail(220,"抢购失败",null);
+            return Result.fail(220,"排队中...",null);
         }
         String value = stringRedisTemplate.opsForValue().get(key);
         if(value.equals("1")){

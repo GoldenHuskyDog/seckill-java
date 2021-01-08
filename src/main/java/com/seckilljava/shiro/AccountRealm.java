@@ -38,10 +38,7 @@ public class AccountRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         // 获取用户名称
         AccountProfile accountProfile = (AccountProfile) principals.getPrimaryPrincipal();
-       /* User user = userService.getOne(new QueryWrapper<User>().eq("id", accountProfile.getId()));
-        if (user == null) {
-            throw new UnknownAccountException("用户不存在");
-        }*/
+
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         // 设置角色
         String role = accountProfile.getRolename();
@@ -50,13 +47,7 @@ public class AccountRealm extends AuthorizingRealm {
             throw new UnknownAccountException("用户没有角色");
         }
         authorizationInfo.addRole(role);
-        /*//设置权限
-        Set<String> permissions = new HashSet<>();
-        List<Rights> permissionslist = rightsService.list(new QueryWrapper<Rights>().eq("role",role));
-        for (Rights rights :permissionslist) {
-            permissions.add(rights.getPermission());
-        }
-        authorizationInfo.setStringPermissions(permissions);*/
+
         return authorizationInfo;
     }
 
